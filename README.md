@@ -1,6 +1,6 @@
 # `create-colyseus-app`
 
-An npm init template for kick starting a Colyseus project (TypeScript)
+An npm init template for kick starting a Colyseus project in TypeScript.
 
 ## :crossed_swords: Usage
 
@@ -14,14 +14,14 @@ npm init colyseus-app
 - `MyRoom.ts`: an empty room handler for you to implement your logic
 - `loadtest/example.ts`: scriptable client for the loadtest tool (see `npm run loadtest`)
 - `package.json`:
-    - scripts:
+    - `scripts`:
         - `npm start`: runs `ts-node index.ts`
         - `npm run loadtest`: runs the [`@colyseus/loadtest`](https://github.com/colyseus/colyseus-loadtest/) tool for testing the connection, using the `loadtest/example.ts` script.
-    - dependencies:
+    - `dependencies`:
         - `colyseus`
         - `@colyseus/monitor`
         - `express`
-    - devDependencies
+    - `devDependencies`
         - `ts-node`
         - `typescript`
         - `@colyseus/loadtest`
