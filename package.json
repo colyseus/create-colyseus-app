@@ -1,8 +1,11 @@
 {
   "name": "create-colyseus-app",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "lib/index.js",
+  "bin": {
+    "create-colyseus-app": ".bin/create-colyseus-app.js"
+  },
   "scripts": {
     "start": "ts-node index.ts",
     "loadtest": "colyseus-loadtest loadtest/example.ts --room my_room --numClients 2",
