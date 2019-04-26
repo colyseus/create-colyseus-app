@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "ts-node index.ts",
-    "loadtest": "colyseus-loadtest loadtest/example.ts --room my_room --numClients 1",
+    "loadtest": "colyseus-loadtest loadtest/example.ts --room my_room --numClients 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
