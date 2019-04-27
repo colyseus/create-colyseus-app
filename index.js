@@ -1,15 +1,15 @@
-import http from "http";
-import express from "express";
-import { Server } from "colyseus";
-import { monitor } from "@colyseus/monitor";
+const http = require('http');
+const express = require('express');
+const colyseus = require('colyseus');
+const monitor = require("@colyseus/monitor").monitor;
 
-import { MyRoom } from "./MyRoom";
+const MyRoom = require('./MyRoom').MyRoom;
 
-const port = Number(process.env.PORT || 2567);
+const port = process.env.PORT || 2567;
 const app = express()
 
 const server = http.createServer(app);
-const gameServer = new Server({ server });
+const gameServer = new colyseus.Server({ server });
 
 // register your room handlers
 gameServer.register('my_room', MyRoom);
