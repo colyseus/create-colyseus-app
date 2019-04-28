@@ -8,11 +8,14 @@ An npm init template for kick starting a Colyseus project in TypeScript.
 npm init colyseus-app
 ```
 
-## Install dependencies
+## How to compile and run
 
 ```
-npm install --global lix
-lix download
+npm run compile
+```
+
+```
+npm start
 ```
 
 ## Structure
