@@ -22,7 +22,7 @@ const prompt = new Select({
     choices: ['TypeScript (recommended)', 'JavaScript', 'Haxe']
 });
 
-prompt.run().then((language => {
+prompt.run().then(language => {
   let folderName = '.';
 
   let branchName = 'typescript';
@@ -59,4 +59,6 @@ prompt.run().then((language => {
     }
   })
 
-}));
+}).catch(e => {
+  // cancelled
+});
