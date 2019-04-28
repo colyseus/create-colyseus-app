@@ -11,14 +11,19 @@ inquirer.prompt([
     type: 'list',
     name: 'language',
     message: "Which language you'd like to use?",
-    choices: ['TypeScript (recommended)', 'JavaScript']
+    choices: ['TypeScript (recommended)', 'JavaScript', 'Haxe']
   }
 ]).then((value => {
   let folderName = '.';
 
-  const branchName = (value.language.indexOf("TypeScript") !== -1)
-    ? "javascript"
-    : "typescript";
+  let branchName = 'typescript';
+
+  if (value.language.indexOf("JavaScript") !== -1) {
+    branchName = 'javascript';
+
+  } else if (value.language.indexOf("Haxe") !== -1) {
+    branchName = 'haxe';
+  }
 
   if (process.argv.length >= 3) {
     folderName = process.argv[2];
