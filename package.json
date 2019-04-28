@@ -8,17 +8,8 @@
     "loadtest": "colyseus-loadtest loadtest/example.ts --room my_room --numClients 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/colyseus/create-colyseus.git"
-  },
-  "keywords": [
-    "colyseus",
-    "multiplayer",
-    "boilerplate"
-  ],
-  "author": "Endel Dreyer",
-  "license": "MIT",
+  "author": "",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/colyseus/create-colyseus/issues"
   },
