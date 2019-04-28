@@ -6,6 +6,11 @@ const path = require('path');
 const inquirer = require('inquirer');
 const rimraf = require('rimraf');
 
+function exec(args, onclose) {
+  const p = spawn(args.shift(), args);
+  p.on("close", onclose);
+}
+
 inquirer.prompt([
   {
     type: 'list',
@@ -32,19 +37,22 @@ inquirer.prompt([
     }
   }
 
-  const clone = spawn("git", ["clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/endel/create-colyseus-app.git", folderName]);
-
-  clone.on("close", code => {
+  console.log("Downloading template...")
+  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/endel/create-colyseus-app.git", folderName], function(code) {
     if (code !== 0) {
       console.error(`${folderName} directory must be empty!`);
       process.exit(code);
     } else {
       rimraf.sync(path.resolve(folderName, '.git'));
-      console.log("");
-      console.log(`All set! ${branchName} project bootstraped at:`, folderName);
-      console.log("");
-      console.log("⚔️  It's time to kick ass and chew bubble gum!");
+      console.log("Installing dependencies...")
+
+      exec(["npm", "install", "--prefix", folderName], function(code) {
+        console.log("");
+        console.log(`All set! ${branchName} project bootstraped at:`, folderName);
+        console.log("");
+        console.log("⚔️  It's time to kick ass and chew bubble gum!");
+      });
     }
-  });
+  })
 
 }));
