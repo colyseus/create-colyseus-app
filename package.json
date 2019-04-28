@@ -1,6 +1,6 @@
 {
   "name": "create-colyseus-app",
-  "version": "0.10.5",
+  "version": "0.10.6",
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "lib/index.js",
   "bin": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "dependencies": {
-    "inquirer": "^6.3.1",
+    "enquirer": "^2.3.0",
     "rimraf": "^2.6.3"
   }
 }

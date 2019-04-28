@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 const { spawn } = require('child_process');
+const { Select } = require('enquirer');
 const fs = require('fs');
 const path = require('path');
-const inquirer = require('inquirer');
 const rimraf = require('rimraf');
 
 function exec(args, onclose) {
@@ -16,22 +16,21 @@ function exec(args, onclose) {
   child.on("close", onclose);
 }
 
-inquirer.prompt([
-  {
-    type: 'list',
+const prompt = new Select({
     name: 'language',
     message: "Which language you'd like to use?",
     choices: ['TypeScript (recommended)', 'JavaScript', 'Haxe']
-  }
-]).then((value => {
+});
+
+prompt.run().then((language => {
   let folderName = '.';
 
   let branchName = 'typescript';
 
-  if (value.language.indexOf("JavaScript") !== -1) {
+  if (language.indexOf("JavaScript") !== -1) {
     branchName = 'javascript';
 
-  } else if (value.language.indexOf("Haxe") !== -1) {
+  } else if (language.indexOf("Haxe") !== -1) {
     branchName = 'haxe';
   }
 
