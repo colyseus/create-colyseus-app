@@ -1,0 +1,11 @@
+-cp .
+
+-main Main
+-dce full
+
+-lib colyseus-hxjs
+-lib tink_core
+-lib tink_lang
+-lib hxnodejs
+
+-js Main.js

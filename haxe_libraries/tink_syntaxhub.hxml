@@ -1,0 +1,6 @@
+# @install: lix --silent download "haxelib:tink_syntaxhub#0.4.3" into tink_syntaxhub/0.4.3/haxelib
+-D tink_syntaxhub=0.4.3
+-cp ${HAXESHIM_LIBCACHE}/tink_syntaxhub/0.4.3/haxelib/src
+--macro tink.SyntaxHub.use()
+-lib tink_priority
+-lib tink_macro
