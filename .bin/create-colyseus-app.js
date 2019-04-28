@@ -7,8 +7,13 @@ const inquirer = require('inquirer');
 const rimraf = require('rimraf');
 
 function exec(args, onclose) {
-  const p = spawn(args.shift(), args);
-  p.on("close", onclose);
+  const child = spawn(args.shift(), args);
+
+  child.stdout.on('data', function(data) {
+    console.log(data.toString());
+  });
+
+  child.on("close", onclose);
 }
 
 inquirer.prompt([
