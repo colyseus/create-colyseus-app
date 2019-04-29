@@ -3,9 +3,9 @@
 -main Main
 -dce full
 
+-D js-es=6
+
 -lib colyseus-hxjs
--lib tink_core
--lib tink_lang
 -lib hxnodejs
 
 -js Main.js
