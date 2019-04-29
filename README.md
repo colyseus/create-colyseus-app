@@ -21,12 +21,12 @@ npm start
 ## Structure
 
 - `Main.hx`: main entry point, register an empty room handler
-- `MyRoom.ts`: an empty room handler for you to implement your logic
+- `MyRoom.hx`: an empty room handler for you to implement your logic
 - `loadtest/example.js`: scriptable client for the loadtest tool (see `npm run loadtest`)
 - `package.json`:
     - `scripts`:
         - `npm start`: runs `node Main.js`
-        - `npm run loadtest`: runs the [`@colyseus/loadtest`](https://github.com/colyseus/colyseus-loadtest/) tool for testing the connection, using the `loadtest/example.ts` script.
+        - `npm run loadtest`: runs the [`@colyseus/loadtest`](https://github.com/colyseus/colyseus-loadtest/) tool for testing the connection, using the `loadtest/example.js` script.
     - `dependencies`:
         - `colyseus`
     - `devDependencies`
