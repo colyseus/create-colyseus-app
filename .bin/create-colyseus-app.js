@@ -50,7 +50,8 @@ prompt.run().then(language => {
       rimraf.sync(path.resolve(folderName, '.git'));
       console.log("Installing dependencies...")
 
-      exec(["npm", "install", "--prefix", folderName], function(code) {
+      const npmCmd = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
+      exec([npmCmd, "install", "--prefix", folderName], function(code) {
         console.log("");
         console.log(`All set! ${branchName} project bootstraped at:`, folderName);
         console.log("");
