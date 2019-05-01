@@ -42,7 +42,7 @@ prompt.run().then(language => {
   }
 
   console.log("Downloading template...")
-  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/endel/create-colyseus-app.git", folderName], function(code) {
+  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", folderName], function(code) {
     if (code !== 0) {
       console.error(`ERROR: '${folderName}' directory must be empty!`);
       process.exit(code);
