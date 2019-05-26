@@ -18,7 +18,7 @@ gameServer.register('my_room', MyRoom);
 // register @colyseus/social routes
 app.use("/", socialRoutes);
 
-// Register colyseus monitor AFTER registering your room handlers
+// register colyseus monitor AFTER registering your room handlers
 app.use("/colyseus", monitor(gameServer));
 
 gameServer.listen(port);
