@@ -15,10 +15,10 @@ const gameServer = new Server({ server });
 // register your room handlers
 gameServer.register('my_room', MyRoom);
 
-// Register @colyseus/social routes
+// register @colyseus/social routes
 app.use("/", socialRoutes);
 
-// Register colyseus monitor AFTER registering your room handlers
+// register colyseus monitor AFTER registering your room handlers
 app.use("/colyseus", monitor(gameServer));
 
 gameServer.listen(port);
