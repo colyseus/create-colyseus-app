@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "@colyseus/monitor": "^0.10.0",
+    "@colyseus/social": "^0.10.2",
     "colyseus": "^0.10.7",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1"
   }
 }
