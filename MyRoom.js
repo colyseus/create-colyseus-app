@@ -1,7 +1,7 @@
 const colyseus = require('colyseus');
 
 exports.MyRoom = class extends colyseus.Room {
-  onInit (options) {}
+  onCreate (options) {}
   onJoin (client, options) {}
   onMessage (client, message) {}
   onLeave (client, consented) {}
