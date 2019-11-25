@@ -16,7 +16,6 @@ app.use(express.json());
 const server = http.createServer(app);
 const gameServer = new colyseus.Server({
   server: server,
-  express: app,
 });
 
 // register your room handlers
