@@ -30,7 +30,7 @@ gameServer.define('my_room', MyRoom);
 // app.use("/", socialRoutes);
 
 // register colyseus monitor AFTER registering your room handlers
-app.use("/colyseus", monitor(gameServer));
+app.use("/colyseus", monitor());
 
 gameServer.listen(port);
 console.log(`Listening on ws://localhost:${ port }`)
