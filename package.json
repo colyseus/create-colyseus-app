@@ -22,9 +22,9 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@colyseus/monitor": "^0.11.0",
-    "@colyseus/social": "^0.10.2",
-    "colyseus": "^0.12.0",
+    "@colyseus/monitor": "^0.12.2",
+    "@colyseus/social": "^0.10.9",
+    "colyseus": "^0.13.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1"
