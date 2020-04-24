@@ -5,8 +5,12 @@ class MyRoom extends Room {
 		super();
 	}
 
-	override function onInit(options:Dynamic) {
+	override function onCreate(options:Dynamic) {
 		trace("Room created!", options);
+
+		this.onMessage("type", function(client, message) {
+			// Handle message here
+		});
 	}
 
 	override function onJoin(client, ?options:Dynamic, ?auth:Dynamic) {
@@ -17,10 +21,6 @@ class MyRoom extends Room {
 	override function onLeave(client, ?consented:Bool) {
 		trace("Client " + client.sessionId + " left.");
 		return null;
-	}
-
-	override function onMessage(client, data:Dynamic) {
-		trace("Message received");
 	}
 
 	override function onDispose() {
