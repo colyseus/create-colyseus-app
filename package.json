@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "devDependencies": {
-    "@colyseus/loadtest": "^0.13.0",
+    "@colyseus/loadtest": "^0.13.1",
     "lix": "^15.3.12"
   },
   "dependencies": {

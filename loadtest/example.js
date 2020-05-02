@@ -4,10 +4,10 @@ exports.requestJoinOptions = function (i) {
 
 exports.onJoin = function () {
     console.log(this.sessionId, "joined.");
-}
 
-exports.onMessage = function (message) {
-    console.log(this.sessionId, "received:", message);
+    this.onMessage("*", (type, message) => {
+        console.log(this.sessionId, "received:", type, message);
+    });
 }
 
 exports.onLeave = function () {
