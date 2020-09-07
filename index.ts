@@ -24,7 +24,7 @@ gameServer.define('my_room', MyRoom);
 /**
  * Register @colyseus/social routes
  *
- * - uncomment if you want to use default authentication (https://docs.colyseus.io/authentication/)
+ * - uncomment if you want to use default authentication (https://docs.colyseus.io/server/authentication/)
  * - also uncomment the import statement
  */
 // app.use("/", socialRoutes);
