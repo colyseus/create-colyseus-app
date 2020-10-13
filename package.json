@@ -1,10 +1,11 @@
 {
+  "private": true,
   "name": "my-app",
   "version": "1.0.0",
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "lib/index.js",
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "ts-node-dev src/index.ts",
     "loadtest": "colyseus-loadtest loadtest/example.ts --room my_room --numClients 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +20,7 @@
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.1",
     "ts-node": "^8.1.0",
+    "ts-node-dev": "^1.0.0-pre.63",
     "typescript": "^3.4.5"
   },
   "dependencies": {
