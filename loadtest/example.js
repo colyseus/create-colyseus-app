@@ -4,7 +4,6 @@ exports.requestJoinOptions = function (i) {
 
 exports.onJoin = function () {
     console.log(this.sessionId, "joined.");
-    console.log(this.sessionId, "joined.");
 
     this.onMessage("*", (type, message) => {
         console.log(this.sessionId, "received:", type, message);
