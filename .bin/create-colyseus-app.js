@@ -23,7 +23,7 @@ const prompt = new Select({
 });
 
 prompt.run().then(language => {
-  let folderName = '.';
+  let outputDir = '.';
 
   let branchName = 'typescript';
 
@@ -35,25 +35,29 @@ prompt.run().then(language => {
   }
 
   if (process.argv.length >= 3) {
-    folderName = process.argv[2];
-    if (!fs.existsSync(folderName)) {
-      fs.mkdirSync(folderName);
-    }
+    outputDir = process.argv[2];
+  }
+
+  outputDir = path.resolve(outputDir);
+
+  // ensure outputFolder exists.
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
   }
 
   console.log("Downloading template...")
-  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", folderName], function(code) {
+  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", outputDir], function(code) {
     if (code !== 0) {
-      console.error(`ERROR: '${folderName}' directory must be empty!`);
+      console.error(`ERROR: '${outputDir}' directory must be empty!`);
       process.exit(code);
     } else {
-      rimraf.sync(path.resolve(folderName, '.git'));
+      rimraf.sync(path.resolve(outputDir, '.git'));
       console.log("Installing dependencies...")
 
       const npmCmd = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
-      exec([npmCmd, "install", "--prefix", folderName], function(code) {
+      exec([npmCmd, "install", "--prefix", outputDir], function(code) {
         console.log("");
-        console.log(`All set! ${branchName} project bootstraped at:`, folderName);
+        console.log(`All set! ${branchName} project bootstraped at:`, outputDir);
         console.log("");
         console.log("⚔️  It's time to kick ass and chew bubble gum!");
       });
