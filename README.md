@@ -1,6 +1,6 @@
 # `create-colyseus-app`
 
-An npm init template for kick starting a Colyseus server in TypeScript.
+An npm init template for kick starting your Colyseus server.
 
 ## :crossed_swords: Usage
 
