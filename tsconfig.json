@@ -6,6 +6,7 @@
     "strict": true,
     "strictNullChecks": false,
     "esModuleInterop": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
