@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "devDependencies": {
-    "@colyseus/loadtest": "^0.14.0"
+    "@colyseus/loadtest": "^0.14.0",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "@colyseus/arena": "^0.14.7",
