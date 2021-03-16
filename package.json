@@ -9,7 +9,7 @@
     "start": "node src/index.js",
     "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",
     "build": "npm run clean && copyfiles -a './src/**/*.js' ./src/**/*.js ./upload && copyfiles package.json ./upload && copyfiles arena.env ./upload",
-    "clean": "rimraf upload",
+    "clean": "node node_modules/rimraf/bin upload",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
