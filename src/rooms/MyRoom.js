@@ -1,5 +1,5 @@
 const colyseus = require('colyseus');
-const MyRoomState = require('./schema/MyRoomState').MyRoomState;
+const { MyRoomState } = require('./schema/MyRoomState');
 
 exports.MyRoom = class extends colyseus.Room {
 

@@ -3,7 +3,8 @@
   "name": "my-app",
   "version": "1.0.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
-  "main": "index.js",
+  "main": "src/index.js",
+  "main-arena": "src/arena.config.js",
   "scripts": {
     "start": "node src/index.js",
     "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",
@@ -19,9 +20,10 @@
     "@colyseus/loadtest": "^0.14.0"
   },
   "dependencies": {
+    "@colyseus/arena": "^0.14.7",
     "@colyseus/monitor": "^0.14.0",
     "@colyseus/social": "^0.10.9",
-    "colyseus": "^0.14.0",
+    "colyseus": "^0.14.9",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1"
