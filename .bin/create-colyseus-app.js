@@ -46,20 +46,25 @@ prompt.run().then(language => {
   }
 
   console.log("Downloading template...")
-  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", outputDir], function(code) {
+  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", outputDir], function (code) {
     if (code !== 0) {
       console.error(`ERROR: '${outputDir}' directory must be empty!`);
       process.exit(code);
     } else {
       rimraf.sync(path.resolve(outputDir, '.git'));
-      console.log("Installing dependencies...")
 
+      console.log("Installing dependencies...")
       const npmCmd = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
-      exec([npmCmd, "install", "--prefix", outputDir], function(code) {
+
+      // npm install with --prefix causes issues on Windows. need to enter the directory first.
+      process.chdir(outputDir);
+      process.cwd();
+
+      exec([npmCmd, "install"], function (code) {
         console.log("");
         console.log(`All set! ${branchName} project bootstraped at:`, outputDir);
         console.log("");
-        console.log("⚔️  It's time to kick ass and chew bubble gum!");
+        console.log("⚔️  It's time to kick ass and chew bubblegum!");
       });
     }
   })
