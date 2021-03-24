@@ -1,6 +1,4 @@
-import { Schema, Context } from "@colyseus/schema";
-
-export const type = Context.create();
+import { Schema, Context, type } from "@colyseus/schema";
 
 export class MyRoomState extends Schema {
 
