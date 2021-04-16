@@ -15,12 +15,15 @@ exports.MyRoom = class extends colyseus.Room {
   }
 
   onJoin (client, options) {
+    console.log(client.sessionId, "joined!");
   }
 
   onLeave (client, consented) {
+    console.log(client.sessionId, "left!");
   }
 
   onDispose() {
+    console.log("room", this.roomId, "disposing...");
   }
 
 }
