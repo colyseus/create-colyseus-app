@@ -1,12 +1,12 @@
-const Arena = require("@colyseus/arena").default;
-const { monitor } = require("@colyseus/monitor");
+import Arena from "@colyseus/arena";
+import { monitor } from "@colyseus/monitor";
 
 /**
  * Import your Room files
  */
-const { MyRoom } = require("./rooms/MyRoom");
+import { MyRoom } from "./rooms/MyRoom.js";
 
-module.exports = Arena({
+export default Arena.default({
     getId: () => "Your Colyseus App",
 
     initializeGameServer: (gameServer) => {

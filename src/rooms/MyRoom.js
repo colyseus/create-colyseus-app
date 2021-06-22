@@ -1,7 +1,7 @@
-const colyseus = require('colyseus');
-const { MyRoomState } = require('./schema/MyRoomState');
+import { Room } from "colyseus";
+import { MyRoomState } from './schema/MyRoomState.js';
 
-exports.MyRoom = class extends colyseus.Room {
+class MyRoom extends Room {
 
   onCreate (options) {
     this.setState(new MyRoomState());
@@ -27,3 +27,5 @@ exports.MyRoom = class extends colyseus.Room {
   }
 
 }
+
+export { MyRoom }
