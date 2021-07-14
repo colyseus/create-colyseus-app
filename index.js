@@ -45,22 +45,24 @@ prompt.run().then(language => {
     fs.mkdirSync(outputDir);
   }
 
-  console.log("Downloading template...")
+  console.log("⏳ Downloading template...")
   exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", outputDir], function (code) {
     if (code !== 0) {
-      console.error(`ERROR: '${outputDir}' directory must be empty!`);
+      console.error(`❌ ERROR: '${outputDir}' directory must be empty!`);
       process.exit(code);
     } else {
       rimraf.sync(path.resolve(outputDir, '.git'));
 
-      console.log("Installing dependencies...")
-      const npmCmd = /^win/.test(process.platform) ? 'npm.cmd' : 'npm';
+      const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
+      const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
+
+      console.log(`📦 Installing dependencies... (${pkgManager})`);
 
       // npm install with --prefix causes issues on Windows. need to enter the directory first.
       process.chdir(outputDir);
       process.cwd();
 
-      exec([npmCmd, "install"], function (code) {
+      exec([pkgManagerCmd, "install"], function (code) {
         console.log("");
         console.log(`All set! ${branchName} project bootstraped at:`, outputDir);
         console.log("");
