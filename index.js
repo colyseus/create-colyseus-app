@@ -18,16 +18,18 @@ function exec(args, onclose) {
 
 const prompt = new Select({
     name: 'language',
-    message: "Which language you'd like to use?",
-    choices: ['TypeScript (recommended)', 'JavaScript', 'Haxe']
+    message: "Which template you'd like to use?",
+    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CommonJS', 'Haxe']
 });
 
 prompt.run().then(language => {
   let outputDir = '.';
-
   let branchName = 'typescript';
 
-  if (language.indexOf("JavaScript") !== -1) {
+  if (language.indexOf("ESM") !== -1) {
+    branchName = 'esm';
+
+  if (language.indexOf("CommonJS") !== -1) {
     branchName = 'javascript';
 
   } else if (language.indexOf("Haxe") !== -1) {
