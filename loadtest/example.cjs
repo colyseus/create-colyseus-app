@@ -1,8 +1,8 @@
-export function requestJoinOptions(i) {
+exports.requestJoinOptions = function (i) {
     return { requestNumber: i };
 }
 
-export function onJoin() {
+exports.onJoin = function () {
     console.log(this.sessionId, "joined.");
 
     this.onMessage("*", (type, message) => {
@@ -10,14 +10,14 @@ export function onJoin() {
     });
 }
 
-export function onLeave() {
+exports.onLeave = function () {
     console.log(this.sessionId, "left.");
 }
 
-export function onError(err) {
+exports.onError = function (err) {
     console.log(this.sessionId, "!! ERROR !!", err.message);
 }
 
-export function onStateChange(state) {
+exports.onStateChange = function (state) {
     console.log(this.sessionId, "new state:", state);
 }

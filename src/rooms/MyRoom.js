@@ -1,7 +1,7 @@
-import { Room } from "colyseus";
-import { MyRoomState } from './schema/MyRoomState.js';
+import { Room } from "@colyseus/core";
+import { MyRoomState } from "./schema/MyRoomState.js";
 
-class MyRoom extends Room {
+export class MyRoom extends Room {
 
   onCreate (options) {
     this.setState(new MyRoomState());
@@ -27,5 +27,3 @@ class MyRoom extends Room {
   }
 
 }
-
-export { MyRoom }

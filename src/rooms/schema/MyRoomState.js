@@ -1,9 +1,12 @@
-import { Schema, defineTypes } from '@colyseus/schema';
+import * as schema from "@colyseus/schema";
 
-class MyRoomState extends Schema {}
+export class MyRoomState extends schema.Schema {
+  constructor() {
+    super();
+    this.mySynchronizedProperty = "Hello world";
+  }
+}
 
-defineTypes(MyRoomState, {
+schema.defineTypes(MyRoomState, {
   mySynchronizedProperty: "string",
 });
-
-export { MyRoomState }
