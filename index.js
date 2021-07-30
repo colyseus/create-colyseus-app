@@ -29,7 +29,7 @@ prompt.run().then(language => {
   if (language.indexOf("ESM") !== -1) {
     branchName = 'esm';
 
-  if (language.indexOf("CommonJS") !== -1) {
+  } else if (language.indexOf("CommonJS") !== -1) {
     branchName = 'javascript';
 
   } else if (language.indexOf("Haxe") !== -1) {
