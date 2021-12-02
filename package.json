@@ -6,6 +6,9 @@
   "bin": {
     "create-colyseus-app": "index.js"
   },
+  "engines": {
+    "node": ">= 14.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/colyseus/create-colyseus.git"
