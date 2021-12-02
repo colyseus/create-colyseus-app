@@ -1,23 +1,22 @@
-export function requestJoinOptions (i) {
-    return { requestNumber: i };
-}
+import { Client } from "colyseus.js";
 
-export function onJoin () {
-    console.log(this.sessionId, "joined.");
-
-    this.onMessage("*", (type, message) => {
-        console.log(this.sessionId, "received:", type, message);
+export async function main(options) {
+    const client = new Client(options.endpoint);
+    const room = await client.joinOrCreate(options.roomName, {
+        // your join options here...
     });
-}
 
-export function onLeave () {
-    console.log(this.sessionId, "left.");
-}
+    console.log("joined successfully!");
 
-export function onError (err) {
-    console.log(this.sessionId, "!! ERROR !!", err.message);
-}
+    room.onMessage("message-type", (payload) => {
+        // logic
+    });
 
-export function onStateChange (state) {
-    console.log(this.sessionId, "new state:", state);
+    room.onStateChange((state) => {
+        console.log("state change:", state);
+    });
+
+    room.onLeave((code) => {
+        console.log("left");
+    });
 }
