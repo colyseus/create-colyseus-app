@@ -50,30 +50,25 @@ prompt.run().then(language => {
 
   rimraf.sync(path.resolve(outputDir, '.git'));
 
-  console.log("📁 Copying template files...");
-  recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (error, results) {
-    if (error) {
-      console.error('Copy failed: ' + error);
-    } else {
-      console.info('Copied ' + results.length + ' files');
+  recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (err, results) {
+    if (err) return console.error('Copy failed: ' + err);
+    console.info(`✂️ Copied ${results.length} template files.`);
 
-      const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
-      const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
+    const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
+    const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
 
-      console.log(`📦 Installing dependencies... (${pkgManager})`);
+    console.log(`📦 Installing dependencies... (${pkgManager} )`);
 
-      // npm install with --prefix causes issues on Windows. need to enter the directory first.
-      process.chdir(outputDir);
-      process.cwd();
+    // npm install with --prefix causes issues on Windows. need to enter the directory first.
+    process.chdir(outputDir);
+    process.cwd();
 
-      exec([pkgManagerCmd, "install"], function (code) {
-        console.log("");
-        console.log(`All set! ${templateName} project bootstraped at:`, outputDir);
-        console.log("");
-        console.log("⚔️  It's time to kick ass and chew bubblegum!");
-      });
-
-    }
+    exec([pkgManagerCmd, "install"], function (code) {
+      console.log("");
+      console.log(`All set! ${templateName} project bootstraped at:`, outputDir);
+      console.log("");
+      console.log("⚔️  It's time to kick ass and chew bubblegum!");
+    });
   });
 
 
