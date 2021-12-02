@@ -5,6 +5,7 @@ const { Select } = require('enquirer');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
+const recursiveCopy = require('recursive-copy');
 
 function exec(args, onclose) {
   const child = spawn(args.shift(), args);
@@ -24,16 +25,16 @@ const prompt = new Select({
 
 prompt.run().then(language => {
   let outputDir = '.';
-  let branchName = 'typescript';
+  let templateName = 'typescript';
 
   if (language.indexOf("ESM") !== -1) {
-    branchName = 'esm';
+    templateName = 'esm';
 
   } else if (language.indexOf("CommonJS") !== -1) {
-    branchName = 'javascript';
+    templateName = 'javascript';
 
   } else if (language.indexOf("Haxe") !== -1) {
-    branchName = 'haxe';
+    templateName = 'haxe';
   }
 
   if (process.argv.length >= 3) {
@@ -47,13 +48,14 @@ prompt.run().then(language => {
     fs.mkdirSync(outputDir);
   }
 
-  console.log("⏳ Downloading template...")
-  exec(["git", "clone", "--depth=1", "--single-branch", "--branch", branchName, "https://github.com/colyseus/create-colyseus-app.git", outputDir], function (code) {
-    if (code !== 0) {
-      console.error(`❌ ERROR: '${outputDir}' directory must be empty!`);
-      process.exit(code);
+  rimraf.sync(path.resolve(outputDir, '.git'));
+
+  console.log("📁 Copying template files...");
+  recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (error, results) {
+    if (error) {
+      console.error('Copy failed: ' + error);
     } else {
-      rimraf.sync(path.resolve(outputDir, '.git'));
+      console.info('Copied ' + results.length + ' files');
 
       const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
       const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
@@ -66,12 +68,14 @@ prompt.run().then(language => {
 
       exec([pkgManagerCmd, "install"], function (code) {
         console.log("");
-        console.log(`All set! ${branchName} project bootstraped at:`, outputDir);
+        console.log(`All set! ${templateName} project bootstraped at:`, outputDir);
         console.log("");
         console.log("⚔️  It's time to kick ass and chew bubblegum!");
       });
+
     }
-  })
+  });
+
 
 }).catch(e => {
   // cancelled

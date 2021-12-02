@@ -1,0 +1,11 @@
+-cp .
+
+-main Main
+-dce full
+
+-D js-es=6
+
+-lib colyseus-hxjs
+-lib hxnodejs
+
+-js Main.js
