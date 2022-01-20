@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "index.js",
+  "engines": {
+    "node": ">= 16.13.0"
+  },
   "scripts": {
     "start": "node Main.js",
     "compile": "haxe build.hxml",

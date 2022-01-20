@@ -5,7 +5,7 @@
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "lib/index.js",
   "engines": {
-    "node": ">= 14.x"
+    "node": ">= 16.13.0"
   },
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only src/index.ts",

@@ -5,7 +5,7 @@
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "src/index.js",
   "engines": {
-    "node": ">= 14.x"
+    "node": ">= 16.13.0"
   },
   "scripts": {
     "start": "node src/index.js",
