@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "dependencies": {
+    "@colyseus/greeting-banner": "^1.0.0",
     "enquirer": "^2.3.0",
     "rimraf": "^2.6.3"
   }

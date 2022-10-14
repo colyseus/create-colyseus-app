@@ -5,6 +5,7 @@ const { Select } = require('enquirer');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
+const greet = require('@colyseus/greeting-banner');
 
 function exec(args, onclose) {
   const child = spawn(args.shift(), args);
@@ -65,8 +66,8 @@ prompt.run().then(language => {
       process.cwd();
 
       exec([pkgManagerCmd, "install"], function (code) {
-        console.log("");
-        console.log(`All set! ${branchName} project bootstraped at:`, outputDir);
+        console.log(greet);
+        console.log(`All set! ${branchName} server bootstraped at:`, outputDir);
         console.log("");
         console.log("⚔️  It's time to kick ass and chew bubblegum!");
       });
