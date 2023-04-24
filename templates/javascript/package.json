@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",
+    "loadtest": "node loadtest/example.js --room my_room --numClients 2",
     "test": "mocha test/**_test.js --exit --timeout 15000",
     "build": "npm run clean && node node_modules/copyfiles/copyfiles -u 1 -a './src/**/*.js' ./src/**/*.js ./upload && node node_modules/copyfiles/copyfiles package.json ./upload && node node_modules/copyfiles/copyfiles arena.env ./upload",
     "clean": "node node_modules/rimraf/bin upload"

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node Main.js",
     "compile": "haxe build.hxml",
-    "loadtest": "colyseus-loadtest loadtest/example.js --room my_room --numClients 2",
+    "loadtest": "node loadtest/example.js --room my_room --numClients 2",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "lix download"
   },

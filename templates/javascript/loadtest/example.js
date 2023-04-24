@@ -1,4 +1,5 @@
 const Colyseus = require("colyseus.js");
+const loadtest = require("@colyseus/loadtest");
 
 export async function main(options) {
     const client = new Colyseus.Client(options.endpoint);
@@ -20,3 +21,5 @@ export async function main(options) {
         console.log("left");
     });
 }
+
+loadtest.cli(main);

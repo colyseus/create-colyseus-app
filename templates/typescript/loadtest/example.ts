@@ -1,5 +1,5 @@
 import { Client, Room } from "colyseus.js";
-import { Options } from "@colyseus/loadtest";
+import { cli, Options } from "@colyseus/loadtest";
 
 export async function main(options: Options) {
     const client = new Client(options.endpoint);
@@ -21,3 +21,5 @@ export async function main(options: Options) {
         console.log("left");
     });
 }
+
+cli(main);
