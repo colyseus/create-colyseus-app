@@ -20,7 +20,7 @@ function exec(args, onclose) {
 const prompt = new Select({
     name: 'language',
     message: "Which template you'd like to use?",
-    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CommonJS', 'Haxe']
+    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CommonJS', 'Haxe (experimental)']
 });
 
 prompt.run().then(language => {
