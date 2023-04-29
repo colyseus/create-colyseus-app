@@ -8,10 +8,10 @@
     "node": ">= 16.13.0"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start": "tsx watch src/index.ts",
     "loadtest": "ts-node loadtest/example.ts --room my_room --numClients 2",
     "build": "npm run clean && tsc",
-    "clean": "node node_modules/rimraf/bin lib",
+    "clean": "rimraf build",
     "test": "mocha --require ts-node/register test/**_test.ts --exit --timeout 15000"
   },
   "author": "",
@@ -28,7 +28,7 @@
     "mocha": "^10.2.0",
     "rimraf": "^5.0.0",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^1.0.0-pre.63",
+    "tsx": "^3.12.6",
     "typescript": "^5.0.4"
   },
   "dependencies": {
