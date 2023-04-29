@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "target": "es6",
-    "module": "commonjs",
+    "outDir": "build",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "strict": true,
     "allowJs": true,
     "strictNullChecks": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": false
   },
   "include": [
     "src"

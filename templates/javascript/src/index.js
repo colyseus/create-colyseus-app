@@ -9,7 +9,7 @@
 const { listen } = require("@colyseus/arena");
 
 // Import arena config
-const arenaConfig = require("./arena.config");
+const app = require("./app.config");
 
 // Create and listen on 2567 (or PORT environment variable.)
-listen(arenaConfig);
+listen(app);

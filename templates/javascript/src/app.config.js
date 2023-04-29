@@ -1,12 +1,12 @@
-import Arena from "@colyseus/arena";
-import { monitor } from "@colyseus/monitor";
+const config = require("@colyseus/tools").default;
+const { monitor } = require("@colyseus/monitor");
 
 /**
  * Import your Room files
  */
-import { MyRoom } from "./rooms/MyRoom";
+const { MyRoom } = require("./rooms/MyRoom");
 
-export default Arena({
+module.exports = config({
     getId: () => "Your Colyseus App",
 
     initializeGameServer: (gameServer) => {
@@ -14,7 +14,6 @@ export default Arena({
          * Define your room handlers:
          */
         gameServer.define('my_room', MyRoom);
-
     },
 
     initializeExpress: (app) => {
@@ -33,10 +32,10 @@ export default Arena({
         app.use("/colyseus", monitor());
     },
 
-
     beforeListen: () => {
         /**
          * Before before gameServer.listen() is called.
          */
     }
+
 });

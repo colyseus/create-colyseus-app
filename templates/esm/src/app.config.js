@@ -1,4 +1,4 @@
-import Arena from "@colyseus/arena";
+import config from "@colyseus/tools";
 import { monitor } from "@colyseus/monitor";
 
 /**
@@ -6,7 +6,7 @@ import { monitor } from "@colyseus/monitor";
  */
 import { MyRoom } from "./rooms/MyRoom.js";
 
-export default Arena.default({
+export default config.default({
     getId: () => "Your Colyseus App",
 
     initializeGameServer: (gameServer) => {

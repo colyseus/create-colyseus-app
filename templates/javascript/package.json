@@ -10,9 +10,7 @@
   "scripts": {
     "start": "node src/index.js",
     "loadtest": "node loadtest/example.js --room my_room --numClients 2",
-    "test": "mocha test/**_test.js --exit --timeout 15000",
-    "build": "npm run clean && node node_modules/copyfiles/copyfiles -u 1 -a './src/**/*.js' ./src/**/*.js ./upload && node node_modules/copyfiles/copyfiles package.json ./upload && node node_modules/copyfiles/copyfiles arena.env ./upload",
-    "clean": "node node_modules/rimraf/bin upload"
+    "test": "mocha test/**_test.js --exit --timeout 15000"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -23,15 +21,13 @@
   "devDependencies": {
     "@colyseus/loadtest": "^0.15.0",
     "@colyseus/testing": "^0.15.0",
-    "copyfiles": "^2.4.1",
-    "mocha": "^9.0.2",
-    "rimraf": "^3.0.2"
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.0"
   },
   "dependencies": {
-    "@colyseus/arena": "^0.15.0",
+    "@colyseus/tools": "^0.15.0",
     "@colyseus/monitor": "^0.15.0",
     "colyseus": "^0.15.0",
-    "cors": "^2.8.5",
-    "express": "^4.16.4"
+    "express": "^4.18.2"
   }
 }
