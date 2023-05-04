@@ -5,7 +5,6 @@ const { Select } = require('enquirer');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const greet = require('@colyseus/greeting-banner');
 const recursiveCopy = require('recursive-copy');
 
 function exec(args, onclose) {
@@ -65,7 +64,7 @@ prompt.run().then(language => {
     process.cwd();
 
     exec([pkgManagerCmd, "install"], function (code) {
-      console.log(greet);
+      console.log("");
       console.log(`All set! ${templateName} project bootstraped at:`, outputDir);
       console.log("");
       console.log("⚔️  It's time to kick ass and chew bubblegum!");
