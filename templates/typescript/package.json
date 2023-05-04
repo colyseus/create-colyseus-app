@@ -9,10 +9,10 @@
   },
   "scripts": {
     "start": "tsx watch src/index.ts",
-    "loadtest": "ts-node loadtest/example.ts --room my_room --numClients 2",
+    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 2",
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
-    "test": "mocha --require ts-node/register test/**_test.ts --exit --timeout 15000"
+    "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -27,7 +27,6 @@
     "@types/mocha": "^10.0.1",
     "mocha": "^10.2.0",
     "rimraf": "^5.0.0",
-    "ts-node": "^10.9.1",
     "tsx": "^3.12.6",
     "typescript": "^5.0.4"
   },

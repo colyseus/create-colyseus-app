@@ -2,7 +2,7 @@ import assert from "assert";
 import { ColyseusTestServer, boot } from "@colyseus/testing";
 
 // import your "arena.config.ts" file here.
-import appConfig from "../src/arena.config";
+import appConfig from "../src/app.config";
 import { MyRoomState } from "../src/rooms/schema/MyRoomState";
 
 describe("testing your Colyseus app", () => {
