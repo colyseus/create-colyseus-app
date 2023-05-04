@@ -53,7 +53,7 @@ prompt.run().then(language => {
 
   recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (err, results) {
     if (err) return console.error('Copy failed: ' + err);
-    console.info(`✂️ Copied ${results.length} template files.`);
+    console.info(`✂️  Copied ${results.length} template files.`);
 
     const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
     const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
