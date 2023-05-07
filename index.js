@@ -52,12 +52,12 @@ prompt.run().then(language => {
 
   recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (err, results) {
     if (err) return console.error('Copy failed: ' + err);
-    console.info(`✂️  Copied ${results.length} template files.`);
+    console.info(`✂️  Created ${results.length} files.`);
 
     const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
     const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
 
-    console.log(`📦 Installing dependencies... (${pkgManager} )`);
+    console.log(`📦 Installing dependencies... (${pkgManager})`);
 
     // npm install with --prefix causes issues on Windows. need to enter the directory first.
     process.chdir(outputDir);
@@ -65,7 +65,7 @@ prompt.run().then(language => {
 
     exec([pkgManagerCmd, "install"], function (code) {
       console.log("");
-      console.log(`All set! ${templateName} project bootstraped at:`, outputDir);
+      console.log(`All set! ${templateName} server created at:`, outputDir);
       console.log("");
       console.log("⚔️  It's time to kick ass and chew bubblegum!");
     });
