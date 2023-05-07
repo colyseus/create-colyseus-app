@@ -50,7 +50,9 @@ prompt.run().then(language => {
 
   rimraf.sync(path.resolve(outputDir, '.git'));
 
-  recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, function (err, results) {
+  const options = { dot: true, };
+
+  recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, options, function (err, results) {
     if (err) return console.error('Copy failed: ' + err);
     console.info(`✂️  Created ${results.length} files.`);
 
