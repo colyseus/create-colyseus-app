@@ -7,7 +7,6 @@ const { monitor } = require("@colyseus/monitor");
 const { MyRoom } = require("./rooms/MyRoom");
 
 module.exports = config({
-    getId: () => "Your Colyseus App",
 
     initializeGameServer: (gameServer) => {
         /**

@@ -7,7 +7,6 @@ import { monitor } from "@colyseus/monitor";
 import { MyRoom } from "./rooms/MyRoom";
 
 export default config({
-    getId: () => "Your Colyseus App",
 
     initializeGameServer: (gameServer) => {
         /**
