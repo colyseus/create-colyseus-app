@@ -1,5 +1,6 @@
 import config from "@colyseus/tools";
 import { monitor } from "@colyseus/monitor";
+import { WebSocketTransport } from "@colyseus/ws-transport";
 
 /**
  * Import your Room files
@@ -7,7 +8,7 @@ import { monitor } from "@colyseus/monitor";
 import { MyRoom } from "./rooms/MyRoom.js";
 
 export default config.default({
-    getId: () => "Your Colyseus App",
+    initializeTransport: (options) => new WebSocketTransport(options),
 
     initializeGameServer: (gameServer) => {
         /**
