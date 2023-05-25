@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "build",
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "strict": true,
     "allowJs": true,
