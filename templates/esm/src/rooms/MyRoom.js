@@ -2,8 +2,10 @@ import { Room } from "@colyseus/core";
 import { MyRoomState } from "./schema/MyRoomState.js";
 
 export class MyRoom extends Room {
+  maxClients = 4;
 
   onCreate (options) {
+
     this.setState(new MyRoomState());
 
     this.onMessage("type", (client, message) => {

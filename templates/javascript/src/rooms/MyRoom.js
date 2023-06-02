@@ -2,6 +2,7 @@ const colyseus = require('colyseus');
 const { MyRoomState } = require('./schema/MyRoomState');
 
 exports.MyRoom = class extends colyseus.Room {
+  maxClients = 4;
 
   onCreate (options) {
     this.setState(new MyRoomState());

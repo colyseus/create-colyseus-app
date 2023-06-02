@@ -1,5 +1,6 @@
 const config = require("@colyseus/tools").default;
 const { monitor } = require("@colyseus/monitor");
+const { playground } = require("@colyseus/playground");
 
 /**
  * Import your Room files
@@ -18,10 +19,19 @@ module.exports = config({
     initializeExpress: (app) => {
         /**
          * Bind your custom express routes here:
+         * Read more: https://expressjs.com/en/starter/basic-routing.html
          */
-        app.get("/", (req, res) => {
+        app.get("/hello_world", (req, res) => {
             res.send("It's time to kick ass and chew bubblegum!");
         });
+
+        /**
+         * Use @colyseus/playground
+         * (It is not recommended to expose this route in a production environment)
+         */
+        if (process.env.NODE_ENV !== "production") {
+            app.use("/", playground);
+        }
 
         /**
          * Bind @colyseus/monitor
