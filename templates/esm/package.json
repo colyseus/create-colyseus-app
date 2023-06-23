@@ -11,7 +11,8 @@
   "scripts": {
     "start": "node src/index.js",
     "loadtest": "node loadtest/example.js --room my_room --numClients 2",
-    "test": "mocha test/**_test.js --exit --timeout 15000"
+    "test": "mocha test/**_test.js --exit --timeout 15000",
+    "build": "exit 0"
   },
   "author": "",
   "license": "UNLICENSED",
