@@ -1,8 +1,8 @@
 import assert from "assert";
 import { boot } from "@colyseus/testing";
 
-// import your "arena.config.ts" file here.
-import appConfig from "../src/arena.config.js";
+// import your "app.config.ts" file here.
+import appConfig from "../src/app.config.js";
 
 describe("testing your Colyseus app", () => {
   let colyseus;

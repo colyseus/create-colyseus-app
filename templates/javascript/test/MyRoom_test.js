@@ -1,8 +1,8 @@
 const assert = require('assert');
 const boot = require('@colyseus/testing').boot;
 
-// import your "arena.config.ts" file here.
-const appConfig = require('../src/arena.config');
+// import your "app.config.ts" file here.
+const appConfig = require('../src/app.config');
 
 describe("testing your Colyseus app", () => {
   let colyseus;
