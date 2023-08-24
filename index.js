@@ -56,10 +56,14 @@ prompt.run().then(language => {
     if (err) return console.error('Copy failed: ' + err);
     console.info(`✂️  Created ${results.length} files.`);
 
-    const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
-    const pkgManagerCmd = /^win/.test(process.platform) ? `${pkgManager}.cmd` : pkgManager;
+    const pkgManager = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0))
+      ? 'bun'
+      : (/yarn/.test(process.env.npm_execpath))
+        ? 'yarn'
+        : 'npm';
+    const pkgManagerCmd = (/^win/.test(process.platform) && pkgManager !== "bun") ? `${pkgManager}.cmd` : pkgManager;
 
-    console.log(`📦 Installing dependencies... (${pkgManager})`);
+    console.log(`📦 Installing dependencies... (${pkgManager} install)`);
 
     // npm install with --prefix causes issues on Windows. need to enter the directory first.
     process.chdir(outputDir);
