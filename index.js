@@ -7,6 +7,8 @@ const path = require('path');
 const rimraf = require('rimraf');
 const recursiveCopy = require('recursive-copy');
 
+const isBun = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0));
+
 function exec(args, onclose) {
   const child = spawn(args.shift(), args);
 
@@ -56,7 +58,7 @@ prompt.run().then(language => {
     if (err) return console.error('Copy failed: ' + err);
     console.info(`✂️  Created ${results.length} files.`);
 
-    const pkgManager = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0))
+    const pkgManager = (isBun)
       ? 'bun'
       : (/yarn/.test(process.env.npm_execpath))
         ? 'yarn'
