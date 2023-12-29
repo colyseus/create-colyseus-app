@@ -5,7 +5,7 @@ An npm init template for kick starting your Colyseus server.
 ## :crossed_swords: Usage
 
 ```
-npm init colyseus-app
+npm create colyseus-app@latest ./my-server
 ```
 
 ## Structure
