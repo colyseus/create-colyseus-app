@@ -27,7 +27,7 @@
     "@types/mocha": "^10.0.1",
     "mocha": "^10.2.0",
     "rimraf": "^5.0.0",
-    "tsx": "^3.12.6",
+    "tsx": "^4.10.2",
     "typescript": "^5.0.4"
   },
   "dependencies": {
