@@ -10,7 +10,7 @@ const recursiveCopy = require('recursive-copy');
 const isBun = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0));
 
 function exec(args, onclose) {
-  const child = spawn(args.shift(), args);
+  const child = spawn(args.shift(), args, { shell: true });
 
   child.stdout.on('data', function(data) {
     console.log(data.toString());
@@ -55,7 +55,11 @@ prompt.run().then(language => {
   const options = { dot: true, };
 
   recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, options, function (err, results) {
-    if (err) return console.error('Copy failed: ' + err);
+    if (err) {
+      console.log(err);
+      console.log(err.stack);
+      return console.error('Copy failed: ' + err);
+    }
     console.info(`✂️  Created ${results.length} files.`);
 
     const pkgManager = (isBun)
