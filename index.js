@@ -50,6 +50,7 @@ prompt.run().then(language => {
     fs.mkdirSync(outputDir);
   }
 
+  // TODO: check "git status" before removing .git
   rimraf.sync(path.resolve(outputDir, '.git'));
 
   const options = { dot: true, };

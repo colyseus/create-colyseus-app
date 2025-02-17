@@ -1,14 +1,5 @@
 const schema = require('@colyseus/schema');
 
-class MyRoomState extends schema.Schema {
-  constructor(){
-    super();
-    this.mySynchronizedProperty = "Hello world";
-  }
-}
-
-schema.defineTypes(MyRoomState, {
+exports.MyRoomState = schema.schema({
   mySynchronizedProperty: "string",
-});
-
-exports.MyRoomState = MyRoomState;
+})

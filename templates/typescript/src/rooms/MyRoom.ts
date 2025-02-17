@@ -3,10 +3,9 @@ import { MyRoomState } from "./schema/MyRoomState";
 
 export class MyRoom extends Room<MyRoomState> {
   maxClients = 4;
+  state = new MyRoomState();
 
   onCreate (options: any) {
-    this.setState(new MyRoomState());
-
     this.onMessage("type", (client, message) => {
       //
       // handle "type" message

@@ -4,7 +4,7 @@
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "index.js",
   "engines": {
-    "node": ">= 16.13.0"
+    "node": ">= 20.9.0"
   },
   "scripts": {
     "start": "node Main.js",

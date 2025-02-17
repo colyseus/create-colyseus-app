@@ -31,7 +31,7 @@ export default config({
          * (It is not recommended to expose this route in a production environment)
          */
         if (process.env.NODE_ENV !== "production") {
-            app.use("/", playground);
+            app.use("/", playground());
         }
 
         /**

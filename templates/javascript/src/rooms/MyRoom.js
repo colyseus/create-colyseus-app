@@ -3,10 +3,9 @@ const { MyRoomState } = require('./schema/MyRoomState');
 
 exports.MyRoom = class extends colyseus.Room {
   maxClients = 4;
+  state = new MyRoomState();
 
   onCreate (options) {
-    this.setState(new MyRoomState());
-
     this.onMessage("type", (client, message) => {
       //
       // handle "type" message.
