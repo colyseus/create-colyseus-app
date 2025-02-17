@@ -39,7 +39,7 @@ export default config({
          * It is recommended to protect this route with a password
          * Read more: https://docs.colyseus.io/tools/monitor/#restrict-access-to-the-panel-using-a-password
          */
-        app.use("/colyseus", monitor());
+        app.use("/monitor", monitor());
     },
 
 
