@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@colyseus/monitor": "^0.16.0",
-    "@colyseus/playground": "^0.16.3",
+    "@colyseus/playground": "^0.16.0",
     "@colyseus/tools": "^0.16.0",
     "@colyseus/ws-transport": "^0.16.0",
     "colyseus": "^0.16.0",

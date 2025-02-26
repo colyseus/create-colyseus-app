@@ -1,6 +1,6 @@
 {
   "name": "create-colyseus-app",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "lib/index.js",
   "bin": {
