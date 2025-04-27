@@ -4,7 +4,6 @@ const { spawn } = require('child_process');
 const { Select } = require('enquirer');
 const fs = require('fs');
 const path = require('path');
-const rimraf = require('rimraf');
 const recursiveCopy = require('recursive-copy');
 
 const isBun = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0));
@@ -50,10 +49,10 @@ prompt.run().then(language => {
     fs.mkdirSync(outputDir);
   }
 
-  // TODO: check "git status" before removing .git
-  rimraf.sync(path.resolve(outputDir, '.git'));
-
-  const options = { dot: true, };
+  const options = {
+    dot: true,
+    overwrite: false,
+  };
 
   recursiveCopy(path.resolve(__dirname, "templates", templateName), outputDir, options, function (err, results) {
     if (err) {
