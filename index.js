@@ -62,6 +62,9 @@ prompt.run().then(language => {
     }
     console.info(`✂️  Created ${results.length} files.`);
 
+    // rename _gitignore to .gitignore (NPM does not let publishing .gitignore files)
+    fs.renameSync(path.join(outputDir, "_gitignore"), path.join(outputDir, ".gitignore"));
+
     const pkgManager = (isBun)
       ? 'bun'
       : (/yarn/.test(process.env.npm_execpath))
