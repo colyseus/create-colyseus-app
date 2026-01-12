@@ -1,5 +1,4 @@
 import config from "@colyseus/tools";
-import { defineRoom, createRouter, createEndpoint } from "@colyseus/core";
 import { monitor } from "@colyseus/monitor";
 import { playground } from "@colyseus/playground";
 
@@ -7,6 +6,7 @@ import { playground } from "@colyseus/playground";
  * Import your Room files
  */
 import { MyRoom } from "./rooms/MyRoom.js";
+import { defineRoom, createRouter, createEndpoint } from "@colyseus/core";
 
 export default config({
     /**
@@ -30,7 +30,7 @@ export default config({
     }),
 
     /**
-     * callback when gameServer instance is available.
+     * Callback when gameServer instance is available.
      */
     initializeGameServer: (gameServer) => {
         gameServer.onShutdown(() => console.log("Shutting down..."));

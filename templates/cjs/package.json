@@ -3,8 +3,7 @@
   "name": "my-app",
   "version": "1.0.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
-  "main": "./src/index.js",
-  "type": "module",
+  "main": "src/index.js",
   "engines": {
     "node": ">= 20.9.0"
   },

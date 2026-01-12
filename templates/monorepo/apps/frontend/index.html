@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colyseus Client</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #e5e5e5;
+      }
+      #app {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 500px;
+        width: 90%;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+      #status {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+      }
+      #status.connected {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+      #status.disconnected {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+      #players {
+        list-style: none;
+      }
+      #players li {
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Colyseus Client</h1>
+      <div id="status" class="disconnected">Disconnected</div>
+      <h2 style="font-size: 1rem; margin-bottom: 0.5rem;">Players:</h2>
+      <ul id="players"></ul>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

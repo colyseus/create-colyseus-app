@@ -1,7 +1,7 @@
-import { Room } from "@colyseus/core";
-import { MyRoomState } from "./schema/MyRoomState.js";
+const colyseus = require('colyseus');
+const { MyRoomState } = require('./schema/MyRoomState');
 
-export class MyRoom extends Room {
+exports.MyRoom = class extends colyseus.Room {
   maxClients = 4;
   state = new MyRoomState();
 

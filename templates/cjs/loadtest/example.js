@@ -1,8 +1,8 @@
-import { Client } from "@colyseus/sdk";
-import { cli } from "@colyseus/loadtest";
+const Colyseus = require("@colyseus/sdk");
+const loadtest = require("@colyseus/loadtest");
 
 export async function main(options) {
-    const client = new Client(options.endpoint);
+    const client = new Colyseus.Client(options.endpoint);
     const room = await client.joinOrCreate(options.roomName, {
         // your join options here...
     });
@@ -22,4 +22,4 @@ export async function main(options) {
     });
 }
 
-cli(main);
+loadtest.cli(main);

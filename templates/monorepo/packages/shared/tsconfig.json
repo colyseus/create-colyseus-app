@@ -1,0 +1,9 @@
+{
+  "extends": "@myapp/typescript-config/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": "build"
+  },
+  "include": ["src"]
+}

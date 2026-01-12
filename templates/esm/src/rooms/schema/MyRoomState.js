@@ -1,5 +1,5 @@
 import { schema } from "@colyseus/schema";
 
 export const MyRoomState = schema({
-  mySynchronizedProperty: "string"
+  mySynchronizedProperty: { type: "string", default: "Hello world" }
 })

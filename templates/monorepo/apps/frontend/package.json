@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@myapp/backend": "workspace:*",
+    "@myapp/typescript-config": "workspace:*",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@myapp/shared": "workspace:*",
+    "@colyseus/sdk": "^0.17.7"
+  }
+}

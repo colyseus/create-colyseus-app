@@ -1,12 +1,12 @@
-import { Room } from "@colyseus/core";
-import { MyRoomState } from "./schema/MyRoomState.js";
+import { Room, Client, CloseCode } from "@colyseus/core";
+import { MyState, Player } from "@myapp/shared";
 
-export class MyRoom extends Room {
+export class MyRoom extends Room<{ state: MyState }> {
   maxClients = 4;
-  state = new MyRoomState();
+  state: MyState = new MyState();
 
   messages = {
-    yourMessageType: (client, message) => {
+    yourMessageType: (client: Client, message: any) => {
       /**
        * Handle "yourMessageType" message.
        */
@@ -14,24 +14,26 @@ export class MyRoom extends Room {
     }
   }
 
-  onCreate (options) {
+  onCreate (options: any) {
     /**
      * Called when a new room is created.
      */
   }
 
-  onJoin (client, options) {
+  onJoin (client: Client, options: any) {
     /**
      * Called when a client joins the room.
      */
     console.log(client.sessionId, "joined!");
+    this.state.players.set(client.sessionId, new Player());
   }
 
-  onLeave (client, code) {
+  onLeave (client: Client, code: CloseCode) {
     /**
      * Called when a client leaves the room.
      */
     console.log(client.sessionId, "left!", code);
+    this.state.players.delete(client.sessionId);
   }
 
   onDispose() {

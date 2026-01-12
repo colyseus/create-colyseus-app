@@ -2,19 +2,16 @@
   "name": "monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.8",
-    "typescript": "5.9.2"
+    "@types/node": "^22.15.3",
+    "typescript": "^5.9.2",
+    "tsx": "^4.21.0"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }

@@ -1,14 +1,14 @@
-import config from "@colyseus/tools";
-import { defineRoom, createRouter, createEndpoint } from "@colyseus/core";
-import { monitor } from "@colyseus/monitor";
-import { playground } from "@colyseus/playground";
+const config = require("@colyseus/tools").default;
+const { defineRoom, createRouter, createEndpoint } = require("@colyseus/core");
+const { monitor } = require("@colyseus/monitor");
+const { playground } = require("@colyseus/playground");
 
 /**
  * Import your Room files
  */
-import { MyRoom } from "./rooms/MyRoom.js";
+const { MyRoom } = require("./rooms/MyRoom");
 
-export default config({
+module.exports = config({
     /**
      * Define your room handlers:
      */
@@ -30,7 +30,7 @@ export default config({
     }),
 
     /**
-     * callback when gameServer instance is available.
+     * Callback when gameServer instance is available.
      */
     initializeGameServer: (gameServer) => {
         gameServer.onShutdown(() => console.log("Shutting down..."));
@@ -66,4 +66,5 @@ export default config({
      */
     beforeListen: () => {
     }
+
 });

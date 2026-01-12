@@ -1,0 +1,18 @@
+{
+  "extends": "./packages/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@myapp/shared": ["./packages/shared/src"],
+      "@myapp/shared/*": ["./packages/shared/src/*"]
+    },
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "references": [
+    { "path": "./apps/backend" },
+    { "path": "./apps/frontend" },
+    { "path": "./packages/shared" }
+  ],
+  "files": []
+}

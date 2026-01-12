@@ -16,4 +16,3 @@ module.exports = {
     wait_ready: true,
   }],
 };
-

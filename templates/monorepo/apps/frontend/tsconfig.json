@@ -1,0 +1,13 @@
+{
+  "extends": "@myapp/typescript-config/base.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "build",
+    "rootDir": "./"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../../packages/shared" },
+    { "path": "../backend" }
+  ]
+}

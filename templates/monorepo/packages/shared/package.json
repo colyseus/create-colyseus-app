@@ -1,0 +1,26 @@
+{
+  "name": "@myapp/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "@myapp/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@colyseus/schema": "^4.0.0"
+  }
+}

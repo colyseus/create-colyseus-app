@@ -7,10 +7,10 @@
  * 
  * See: https://docs.colyseus.io/server
  */
-import { listen } from "@colyseus/tools";
+const { listen } = require("@colyseus/tools");
 
 // Import Colyseus config
-import app from "./app.config.js";
+const app = require("./app.config");
 
 // Create and listen on 2567 (or PORT environment variable.)
 listen(app);

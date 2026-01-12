@@ -8,6 +8,11 @@ const recursiveCopy = require('recursive-copy');
 
 const isBun = (typeof(Bun) !== "undefined" || (process.env.npm_config_user_agent && process.env.npm_config_user_agent.indexOf("bun") >= 0));
 
+// Parse command-line flags for template selection
+const args = process.argv.slice(2);
+const templateFlag = args.find(arg => ['--esm', '--cjs', '--typescript'].includes(arg));
+const nonFlagArgs = args.filter(arg => !arg.startsWith('--'));
+
 function exec(args, onclose) {
   const child = spawn(args.shift(), args, { shell: true });
 
@@ -18,29 +23,40 @@ function exec(args, onclose) {
   child.on("close", onclose);
 }
 
-const prompt = new Select({
+// Determine template from flag or prompt
+function getTemplateFromFlag(flag) {
+  switch (flag) {
+    case '--esm': return 'esm';
+    case '--cjs': return 'cjs';
+    case '--typescript': return 'typescript';
+    default: return null;
+  }
+}
+
+function getTemplateFromLanguage(language) {
+  if (language.indexOf("ESM") !== -1) return 'esm';
+  if (language.indexOf("CJS") !== -1) return 'cjs';
+  if (language.indexOf("Haxe") !== -1) return 'haxe';
+  return 'typescript';
+}
+
+async function selectTemplate() {
+  if (templateFlag) {
+    return getTemplateFromFlag(templateFlag);
+  }
+
+  const prompt = new Select({
     name: 'language',
     message: "Which template you'd like to use?",
-    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CommonJS', 'Haxe (experimental)']
-});
+    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CJS (legacy)', 'Haxe (not up-to-date: use at your own risk)']
+  });
 
-prompt.run().then(language => {
-  let outputDir = '.';
-  let templateName = 'typescript';
+  const language = await prompt.run();
+  return getTemplateFromLanguage(language);
+}
 
-  if (language.indexOf("ESM") !== -1) {
-    templateName = 'esm';
-
-  } else if (language.indexOf("CommonJS") !== -1) {
-    templateName = 'javascript';
-
-  } else if (language.indexOf("Haxe") !== -1) {
-    templateName = 'haxe';
-  }
-
-  if (process.argv.length >= 3) {
-    outputDir = process.argv[2];
-  }
+selectTemplate().then(templateName => {
+  let outputDir = nonFlagArgs[0] || '.';
 
   outputDir = path.resolve(outputDir);
 
