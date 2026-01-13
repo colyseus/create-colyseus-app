@@ -6,7 +6,7 @@ import appConfig from "../src/app.config.js";
 import { MyState } from "@myapp/shared";
 
 describe("testing your Colyseus app", () => {
-  let colyseus: ColyseusTestServer;
+  let colyseus: ColyseusTestServer<typeof appConfig>;
 
   before(async () => colyseus = await boot(appConfig));
   after(async () => colyseus.shutdown());
@@ -15,7 +15,7 @@ describe("testing your Colyseus app", () => {
 
   it("connecting into a room", async () => {
     // `room` is the server-side Room instance reference.
-    const room = await colyseus.createRoom<MyState>("my_room", {});
+    const room = await colyseus.createRoom("my_room", {});
 
     // `client1` is the client-side `Room` instance reference (same as JavaScript SDK)
     const client1 = await colyseus.connectTo(room);

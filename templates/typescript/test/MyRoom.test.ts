@@ -6,7 +6,7 @@ import appConfig from "../src/app.config.js";
 import { MyRoomState } from "../src/rooms/schema/MyRoomState.js";
 
 describe("testing your Colyseus app", () => {
-  let colyseus: ColyseusTestServer;
+  let colyseus: ColyseusTestServer<typeof appConfig>;
 
   before(async () => colyseus = await boot(appConfig));
   after(async () => colyseus.shutdown());
