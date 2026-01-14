@@ -27,7 +27,7 @@
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "dependencies": {
     "enquirer": "^2.3.0",
-    "npm": "^10.8.2",
+    "npm": "^11.7.0",
     "recursive-copy": "^2.0.13"
   }
 }
