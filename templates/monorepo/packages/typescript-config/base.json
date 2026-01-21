@@ -15,7 +15,6 @@
     "strict": true,
 
     "allowJs": true,
-    "strictNullChecks": false,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": false

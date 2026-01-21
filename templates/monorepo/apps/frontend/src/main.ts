@@ -7,6 +7,18 @@ const playersEl = document.getElementById("players")!;
 async function main() {
     const client = new ColyseusSDK<typeof server>("ws://localhost:2567");
 
+    // using the API routes
+    client.http.get("/api/hello").then((response) => {
+        console.log("/api/hello response:", response.data?.message);
+    });
+
+    // @ts-expect-error
+    client.http.get("/non-existing-route")
+        .then((response) => {})
+        .catch((error) => {
+            console.log("/non-existing-route error:", error.code);
+        });
+
     statusEl.textContent = "Connecting...";
 
     try {

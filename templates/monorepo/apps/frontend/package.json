@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "@myapp/shared": "workspace:*",
-    "@colyseus/sdk": "^0.17.7"
+    "@colyseus/sdk": "^0.17.17"
   }
 }

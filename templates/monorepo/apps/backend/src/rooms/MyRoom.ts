@@ -1,4 +1,4 @@
-import { Room, Client, CloseCode } from "@colyseus/core";
+import { Room, Client, CloseCode } from "colyseus";
 import { MyState, Player } from "@myapp/shared";
 
 export class MyRoom extends Room<{ state: MyState }> {
