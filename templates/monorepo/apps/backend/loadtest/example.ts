@@ -17,7 +17,7 @@ export async function main(options: Options) {
         console.log("state change:", state);
     });
 
-    room.onLeave((code: CloseCode) => {
+    room.onLeave((code: number) => {
         console.log("left");
     });
 }

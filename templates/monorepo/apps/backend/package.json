@@ -19,7 +19,7 @@
     "test": "mocha -r tsx test/**.test.ts --exit --timeout 15000"
   },
   "devDependencies": {
-    "@colyseus/loadtest": "^0.17.5",
+    "@colyseus/loadtest": "^0.17.7",
     "@colyseus/sdk": "^0.17.17",
     "@colyseus/testing": "^0.17.10",
     "@myapp/typescript-config": "workspace:*",
