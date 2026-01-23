@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "my-app",
-  "version": "1.0.0",
+  "version": "0.17.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "src/index.js",
   "engines": {

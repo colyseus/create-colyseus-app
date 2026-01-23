@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "version": "1.0.0",
+  "version": "0.17.0",
   "description": "npm init template for bootstraping an empty Colyseus project",
   "main": "index.js",
   "engines": {
