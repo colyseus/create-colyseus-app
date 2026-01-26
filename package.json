@@ -18,7 +18,13 @@
     "multiplayer",
     "boilerplate"
   ],
-  "files": ["templates", "index.js"],
+  "files": [
+    "templates",
+    "index.js",
+    "!templates/**/node_modules",
+    "!templates/**/build",
+    "!templates/**/dist"
+  ],
   "author": "Endel Dreyer",
   "license": "MIT",
   "bugs": {
