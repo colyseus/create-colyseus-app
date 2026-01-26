@@ -1,0 +1,17 @@
+
+# Dependencies
+node_modules
+
+# Build artifacts
+build
+dist
+lib
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+
+# OS/Editor
+.DS_Store
+.idea
+.vscode
