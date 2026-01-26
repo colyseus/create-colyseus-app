@@ -1,7 +1,7 @@
 import { ArraySchema, MapSchema, Schema, type } from "@colyseus/schema";
 
 export class Item extends Schema {
-    @type("string") name: string;
+    @type("string") name!: string;
 }
 
 export class Player extends Schema {
