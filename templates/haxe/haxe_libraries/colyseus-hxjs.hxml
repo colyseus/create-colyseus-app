@@ -1,4 +1,4 @@
-# @install: lix --silent download "gh://github.com/serjek/colyseus-hxjs#0fe9561f6dca52faf700e917cc403c4b3652336f" into colyseus-hxjs/0.17.8/github/0fe9561f6dca52faf700e917cc403c4b3652336f
--cp ${HAXE_LIBCACHE}/colyseus-hxjs/0.17.8/github/0fe9561f6dca52faf700e917cc403c4b3652336f/src
+# @install: lix --silent download "gh://github.com/serjek/colyseus-hxjs#99379d479a4fb6ce05a01f902ca9047d5099707b" into colyseus-hxjs/0.17.8/github/99379d479a4fb6ce05a01f902ca9047d5099707b
+-cp ${HAXE_LIBCACHE}/colyseus-hxjs/0.17.8/github/99379d479a4fb6ce05a01f902ca9047d5099707b/src
 -D colyseus-hxjs=0.17.8
 -D js-es=6
