@@ -4,8 +4,15 @@
 -dce full
 
 -D js-es=6
+-D no-deprecation-warnings
+-D js-source-map
 
 -lib colyseus-hxjs
 -lib hxnodejs
+
+# Schema codegen: generates TypeScript stubs for client schema generation
+# Comment out these lines to disable
+-D schema-codegen-output=generated/schemas
+--macro colyseus.server.schema.SchemaCodegen.generate()
 
 -js Main.js

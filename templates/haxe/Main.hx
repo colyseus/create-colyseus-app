@@ -1,20 +1,46 @@
 package;
-import server.rooms.*;
-import colyseus.server.Server;
-import js.node.Http;
+import colyseus.server.Express;
+import colyseus.server.Colyseus.defineServer;
+import colyseus.server.Colyseus.defineRoom;
+import colyseus.server.Colyseus.monitor;
+import colyseus.server.Colyseus.playground;
 
 class Main {
 	static var PORT: Int = 2567;
 
 	static function main() {
 		// Attach WebSocket Server on HTTP Server.
-		var gameServer = new Server({ server: Http.createServer() });
+		var serverDef = defineServer({
+			devMode: true,
+			rooms: {
+				STATE_HANDLER: defineRoom(StateHandlerRoom),
+				VIEW_ROOM: defineRoom(ViewRoom),
+			},
+			express: (app) -> {
+				app.get("/hi", (req, res) -> {
+					res.send("It's time to kick ass and chew bubblegum!");
+				});
+				app.use(
+					"/monitor", 
+					ExpressAuth.create({
+						users: {
+							"admin": "admin"
+						},
+						challenge: true
+					}),
+					monitor()
+				);
+				app.use("/", playground());
+			}
+		});
 
-		// Register ChatRoom as "chat"
-		gameServer.register("my_room", MyRoom);
+		serverDef.onShutdown(function() {
+			trace('game server is going down.');
+			return null;
+		});
 
-		gameServer.listen(PORT);
-
+		serverDef.listen(PORT);
+		
 		trace('-- listening on 0.0.0.0:${PORT}... --');
 	}
 }
