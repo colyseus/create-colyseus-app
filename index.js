@@ -48,7 +48,7 @@ async function selectTemplate() {
   const prompt = new Select({
     name: 'language',
     message: "Which template you'd like to use?",
-    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CJS (legacy)', 'Haxe (not up-to-date: use at your own risk)']
+    choices: ['TypeScript (recommended)', 'JavaScript - ESM', 'JavaScript - CJS (legacy)', 'Haxe (by @serjek)']
   });
 
   const language = await prompt.run();
