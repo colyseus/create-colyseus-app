@@ -1,7 +1,8 @@
-import { Schema, type } from "@colyseus/schema";
+import { schema, t, type SchemaType } from "@colyseus/schema";
 
-export class MyRoomState extends Schema {
+export const MyRoomState = schema({
 
-  @type("string") mySynchronizedProperty: string = "Hello world";
+  mySynchronizedProperty: t.string().default("Hello world"),
 
-}
+});
+export type MyRoomState = SchemaType<typeof MyRoomState>;

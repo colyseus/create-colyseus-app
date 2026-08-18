@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "@myapp/shared": "workspace:*",
-    "@colyseus/sdk": "^0.17.17"
+    "@colyseus/sdk": "^0.18.1"
   }
 }

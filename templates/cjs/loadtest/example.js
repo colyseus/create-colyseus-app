@@ -1,7 +1,7 @@
 const Colyseus = require("@colyseus/sdk");
 const loadtest = require("@colyseus/loadtest");
 
-export async function main(options) {
+async function main(options) {
     const client = new Colyseus.Client(options.endpoint);
     const room = await client.joinOrCreate(options.roomName, {
         // your join options here...

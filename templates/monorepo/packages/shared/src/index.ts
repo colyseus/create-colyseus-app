@@ -1,13 +1,16 @@
-import { ArraySchema, MapSchema, Schema, type } from "@colyseus/schema";
+import { schema, t, type SchemaType } from "@colyseus/schema";
 
-export class Item extends Schema {
-    @type("string") name!: string;
-}
+export const Item = schema({
+    name: t.string(),
+});
+export type Item = SchemaType<typeof Item>;
 
-export class Player extends Schema {
-    @type([Item]) items = new ArraySchema<Item>();
-}
+export const Player = schema({
+    items: t.array(Item),
+});
+export type Player = SchemaType<typeof Player>;
 
-export class MyState extends Schema {
-    @type({ map: Player }) players = new MapSchema<Player>();
-}
+export const MyState = schema({
+    players: t.map(Player),
+});
+export type MyState = SchemaType<typeof MyState>;

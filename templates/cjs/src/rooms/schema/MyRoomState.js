@@ -1,5 +1,5 @@
-const schema = require('@colyseus/schema');
+const { schema, t } = require('@colyseus/schema');
 
-exports.MyRoomState = schema.schema({
-  mySynchronizedProperty: { type: "string", default: "Hello world" }
+exports.MyRoomState = schema({
+  mySynchronizedProperty: t.string().default("Hello world")
 })

@@ -21,6 +21,6 @@
     "@myapp/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@colyseus/schema": "^4.0.0"
+    "@colyseus/schema": "^5.0.11"
   }
 }

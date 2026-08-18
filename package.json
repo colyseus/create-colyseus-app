@@ -1,13 +1,13 @@
 {
   "name": "create-colyseus-app",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "lib/index.js",
   "bin": {
     "create-colyseus-app": "index.js"
   },
   "engines": {
-    "node": ">= 20.x"
+    "node": ">= 22.x"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,11 @@
     "index.js",
     "!templates/**/node_modules",
     "!templates/**/build",
-    "!templates/**/dist"
+    "!templates/**/dist",
+    "!templates/**/package-lock.json",
+    "!templates/**/pnpm-lock.yaml",
+    "!templates/**/yarn.lock",
+    "!templates/**/bun.lock*"
   ],
   "author": "Endel Dreyer",
   "license": "MIT",
