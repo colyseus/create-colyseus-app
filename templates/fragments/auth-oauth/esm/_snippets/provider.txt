@@ -1,0 +1,9 @@
+/**
+ * Redirect URL to authorize with the provider:
+ *   {backend_url}/auth/provider/{{oauth-provider}}/callback
+ */
+auth.oauth.addProvider("{{oauth-provider}}", {
+  key: process.env.OAUTH_CLIENT_ID,
+  secret: process.env.OAUTH_CLIENT_SECRET,
+  scope: {{oauth-scope}},
+});

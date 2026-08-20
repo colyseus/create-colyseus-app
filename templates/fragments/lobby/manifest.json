@@ -1,0 +1,9 @@
+{
+  "id": "lobby",
+  "title": "Lobby room",
+  "snippets": {
+    "server:imports": "imports.txt",
+    "server:rooms": "rooms.txt",
+    "server:my-room-chain": "chain.txt"
+  }
+}

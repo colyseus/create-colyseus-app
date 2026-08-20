@@ -1,0 +1,12 @@
+{
+  "id": "auth-module",
+  "title": "@colyseus/auth",
+  "dependencies": { "@colyseus/auth": "^0.18.1" },
+  "snippets": {
+    "server:imports": "imports.txt",
+    "server:express": "express.txt"
+  },
+  "env": {
+    "all": { "JWT_SECRET": "@secret", "SESSION_SECRET": "@secret" }
+  }
+}

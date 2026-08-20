@@ -1,0 +1,1 @@
+import { LobbyRoom } from "colyseus";

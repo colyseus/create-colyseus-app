@@ -1,0 +1,7 @@
+/**
+ * Disconnect clients that have sent nothing for a minute. One timer per room —
+ * activity is read from the timestamp the rate-limiter already maintains.
+ */
+plugins = definePlugins({
+  idle: new IdleKickPlugin({ timeoutMs: 60_000 }),
+});

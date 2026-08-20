@@ -1,0 +1,5 @@
+/**
+ * Mounts /auth/* — anonymous sign-in, email + password registration, password
+ * reset. The room's static onAuth verifies the JWT these endpoints issue.
+ */
+app.use(auth.prefix, auth.routes());

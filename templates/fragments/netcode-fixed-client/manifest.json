@@ -1,0 +1,6 @@
+{
+  "id": "netcode-fixed-client",
+  "title": "Client-side prediction",
+  "languages": ["ts"],
+  "description": "Browser client that predicts locally and reconciles with the server."
+}

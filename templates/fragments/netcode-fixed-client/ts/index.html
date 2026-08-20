@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Colyseus</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem auto; max-width: 848px; padding: 0 1rem; }
+      #status { font-weight: 600; }
+      #arena { position: relative; width: 800px; height: 600px; max-width: 100%; background: #1114; border-radius: .5rem; overflow: hidden; }
+      .player { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 4px; background: #4ea1ff; will-change: transform; }
+      .player.self { background: #ffd24e; }
+    </style>
+  </head>
+  <body>
+    <h1>Colyseus</h1>
+    <p id="status">Connecting…</p>
+    <div id="arena"></div>
+    <p>Move with <kbd>WASD</kbd> or the arrow keys. Open a second tab to see another player.</p>
+    <p><a href="/playground">Playground</a> · <a href="/monitor">Monitor</a></p>
+    <script type="module" src="/src/client/index.ts"></script>
+  </body>
+</html>

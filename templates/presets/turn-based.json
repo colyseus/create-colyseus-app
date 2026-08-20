@@ -1,0 +1,11 @@
+{
+  "name": "Turn-based",
+  "description": "Turn order with a per-turn deadline.",
+  "answers": {
+    "layout": "server",
+    "netcode": "turn-based",
+    "matchmaking": ["reconnection"],
+    "auth": "none",
+    "database": "none"
+  }
+}

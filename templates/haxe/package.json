@@ -10,7 +10,6 @@
     "start": "node Main.js",
     "compile": "haxe build.hxml",
     "loadtest": "node loadtest/example.js --room my_room --numClients 2",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "lix download"
   },
   "author": "",
@@ -21,7 +20,6 @@
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "devDependencies": {
     "@colyseus/loadtest": "^0.17.7",
-    "@colyseus/schema": "^4.0.8",
     "@colyseus/sdk": "^0.17.17",
     "@colyseus/testing": "^0.17.10",
     "lix": "^15.12.4",

@@ -1,0 +1,5 @@
+{
+  "id": "netcode-turn-based",
+  "title": "Turn-based",
+  "description": "Server-owned turn order with a per-turn deadline."
+}

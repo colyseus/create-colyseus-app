@@ -1,0 +1,8 @@
+/**
+ * Boots the database (and runs migrations) before the server listens, and
+ * mounts the @colyseus/auth routes automatically.
+ */
+database: db,
+
+/** Matchmaking state lives in the same connection — no separate Redis. */
+driver: new DatabaseDriver(),

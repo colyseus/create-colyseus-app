@@ -1,0 +1,2 @@
+import { auth } from "@colyseus/auth";
+import "./config/auth.js";

@@ -2,7 +2,7 @@
   "name": "create-colyseus-app",
   "version": "0.18.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
-  "main": "lib/index.js",
+  "main": "index.js",
   "bin": {
     "create-colyseus-app": "index.js"
   },
@@ -19,6 +19,7 @@
     "boilerplate"
   ],
   "files": [
+    "lib",
     "templates",
     "index.js",
     "!templates/**/node_modules",
@@ -37,7 +38,10 @@
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "dependencies": {
     "enquirer": "^2.3.0",
-    "npm": "^10.8.2",
-    "recursive-copy": "^2.0.13"
+    "npm": "^10.8.2"
+  },
+  "scripts": {
+    "test": "node scripts/smoke.mjs",
+    "test:quick": "node scripts/smoke.mjs --quick"
   }
 }

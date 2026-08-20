@@ -1,0 +1,14 @@
+{
+  "name": "{{name}}",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "start": "npm start -w apps/backend",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">= 22.0.0"
+  }
+}

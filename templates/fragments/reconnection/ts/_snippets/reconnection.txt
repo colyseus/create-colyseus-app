@@ -1,0 +1,16 @@
+/**
+ * Called on any disconnection the client did not ask for — a network blip, a
+ * suspended tab, a tunnel change. Holding the seat lets the SDK retry into the
+ * same session, so the player keeps their entity and their place in the room.
+ */
+onDrop(client: Client, code: CloseCode) {
+  // Deliberately not awaited: the framework routes the outcome to onReconnect()
+  // or onLeave() by itself. The catch is only here because the promise also
+  // rejects when the room is already disposing (server shutdown), which would
+  // otherwise surface as an unhandled rejection.
+  this.allowReconnection(client, 30).catch(() => {});
+}
+
+onReconnect(client: Client) {
+  console.log(client.sessionId, "reconnected!");
+}

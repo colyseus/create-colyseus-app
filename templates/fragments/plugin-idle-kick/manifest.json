@@ -1,0 +1,8 @@
+{
+  "id": "plugin-idle-kick",
+  "title": "Idle kick plugin",
+  "snippets": {
+    "room:imports": "imports.txt",
+    "room:fields": "fields.txt"
+  }
+}

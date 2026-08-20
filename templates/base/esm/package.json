@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "my-app",
+  "version": "0.18.0",
+  "description": "npm init template for bootstrapping an empty Colyseus project",
+  "main": "./src/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">= 22.0.0"
+  },
+  "scripts": {
+    "start": "node --watch src/index.js",
+    "loadtest": "node loadtest/example.js --room my_room --numClients 2",
+    "test": "mocha test/**.test.js --exit --timeout 15000",
+    "build": "exit 0"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/colyseus/create-colyseus/issues"
+  },
+  "homepage": "https://github.com/colyseus/create-colyseus#readme",
+  "devDependencies": {
+    "@colyseus/loadtest": "^0.18.1",
+    "@colyseus/sdk": "^0.18.1",
+    "@colyseus/testing": "^0.18.3",
+    "mocha": "^11.7.5",
+    "rimraf": "^5.0.0"
+  },
+  "dependencies": {
+    "@colyseus/schema": "^5.0.14",
+    "@colyseus/tools": "^0.18.1",
+    "colyseus": "^0.18.2",
+    "express": "^5.2.1"
+  }
+}

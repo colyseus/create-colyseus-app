@@ -1,0 +1,5 @@
+{
+  "id": "netcode-relay",
+  "title": "Relay",
+  "description": "Client-authoritative transforms, relayed to everyone else."
+}
