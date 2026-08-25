@@ -34,14 +34,7 @@ const FILTER = filterIndex === -1 ? null : args[filterIndex + 1];
  * Cases that fail for reasons outside this repository. Reported separately so
  * they stay visible without turning CI permanently red.
  */
-const KNOWN_ISSUES = [
-  {
-    // Predict's `smoothMs` is not in the published @colyseus/sdk 0.18.1 yet.
-    match: (testCase, step) => /tsc|typecheck/.test(step)
-      && (testCase.flags.includes("fixed") || testCase.flags.includes("realtime-action")),
-    reason: "netcode-fixed-client uses Predict `smoothMs`, which needs the next @colyseus/sdk release",
-  },
-];
+const KNOWN_ISSUES = [];
 
 const languages = choicesFor(AXES.find((a) => a.id === "language"), null).map((c) => c.value);
 const axis = (id) => AXES.find((a) => a.id === id);
