@@ -99,15 +99,22 @@ const record = (name, step, ok, detail) => results.push({ name, step, ok, detail
 const WINDOWS = process.platform === "win32";
 
 function run(cmd, cmdArgs, cwd) {
-  // Everything but node ships as a .cmd shim on Windows, which spawnSync only
-  // finds by its full name.
-  return spawnSync(WINDOWS && cmd !== "node" ? `${cmd}.cmd` : cmd, cmdArgs, {
+  const result = spawnSync(cmd, cmdArgs, {
     cwd,
     encoding: "utf8",
+    // Everything but node is a .cmd shim on Windows, and since CVE-2024-27980
+    // Node refuses to spawn one without a shell. Only node is passed paths.
+    shell: WINDOWS && cmd !== "node",
     // stdin closed on purpose: a prompt would block instead of silently passing.
     stdio: ["ignore", "pipe", "pipe"],
     env: { ...process.env, CI: "1" },
   });
+
+  // A failed spawn leaves both streams null; hand the reason to whichever check
+  // reads them, rather than letting it die on .trim().
+  result.stdout ??= "";
+  result.stderr ??= result.error ? String(result.error) : "";
+  return result;
 }
 
 // ---------------------------------------------------------------- CLI contract
