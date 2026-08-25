@@ -13,7 +13,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "build:client": "BUILD_TARGET=client vite build",
+    "build:client": "vite build --mode client",
     "clean": "rimraf dist"
   },
   "dependencies": {
