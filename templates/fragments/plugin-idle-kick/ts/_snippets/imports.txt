@@ -1,0 +1,2 @@
+import { definePlugins } from "colyseus";
+import { IdleKickPlugin } from "colyseus/plugins/idle-kick";

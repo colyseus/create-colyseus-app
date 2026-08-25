@@ -1,0 +1,2 @@
+/** Named export read by the `colyseus/vite` plugin's `serverEntry`. */
+export { server };

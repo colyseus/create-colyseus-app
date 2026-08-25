@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  push:
+    branches: [master, "0.*"]
+  pull_request:
+
+# A re-push supersedes the matrix; don't leave both legs of the old one burning.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    name: generate the option matrix (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # Generates every preset, every single-axis variation and the multi-axis
+      # combos with stdin closed, then installs, typechecks and runs each
+      # generated project's own test suite.
+      - run: node scripts/smoke.mjs

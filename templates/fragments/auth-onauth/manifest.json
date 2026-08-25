@@ -1,0 +1,10 @@
+{
+  "id": "auth-onauth",
+  "title": "Room onAuth()",
+  "snippets": {
+    "room:imports": "imports.txt",
+    "room:methods": "onauth.txt",
+    "room:onJoin": "onjoin.txt",
+    "test:setup": "test-setup.txt"
+  }
+}

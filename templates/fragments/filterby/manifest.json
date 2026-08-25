@@ -1,0 +1,7 @@
+{
+  "id": "filterby",
+  "title": "filterBy",
+  "snippets": {
+    "server:my-room-chain": "filterby.txt"
+  }
+}

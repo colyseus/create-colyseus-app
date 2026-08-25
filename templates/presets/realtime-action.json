@@ -1,0 +1,11 @@
+{
+  "name": "Realtime action",
+  "description": "Authoritative fixed tick, server-validated input, client-side prediction.",
+  "answers": {
+    "layout": "vite",
+    "netcode": "fixed",
+    "matchmaking": ["lobby", "reconnection"],
+    "auth": "none",
+    "database": "none"
+  }
+}

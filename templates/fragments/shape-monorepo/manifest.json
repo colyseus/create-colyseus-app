@@ -1,0 +1,26 @@
+{
+  "id": "shape-monorepo",
+  "title": "pnpm/npm monorepo",
+  "languages": ["ts"],
+  "appRoot": "apps/backend",
+  "moves": {
+    "src": "apps/backend/src",
+    "test": "apps/backend/test",
+    "loadtest": "apps/backend/loadtest",
+    "package.json": "apps/backend/package.json",
+    "tsconfig.json": "apps/backend/tsconfig.json",
+    "tsconfig.build.json": "apps/backend/tsconfig.build.json",
+    "ecosystem.config.cjs": "apps/backend/ecosystem.config.cjs",
+    ".env.development": "apps/backend/.env.development",
+    ".env.production": "apps/backend/.env.production"
+  },
+  "packageJson": {
+    "name": "@{{name}}/backend",
+    "version": "0.1.0",
+    "description": "Colyseus server",
+    "exports": { "./*": "./src/*.ts" }
+  },
+  "packageJsonDelete": ["bugs", "homepage"],
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "gitignore": ["dist"]
+}

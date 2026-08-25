@@ -1,0 +1,7 @@
+node_modules
+.haxelib
+generated
+Main.js
+Main.js.map
+.colyseus-cloud.json
+.devmode.json

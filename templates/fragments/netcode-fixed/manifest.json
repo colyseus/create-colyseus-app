@@ -1,0 +1,6 @@
+{
+  "id": "netcode-fixed",
+  "title": "Fixed tick + client prediction",
+  "languages": ["ts"],
+  "description": "Authoritative fixed timestep fed by validated per-client input."
+}

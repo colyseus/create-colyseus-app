@@ -1,0 +1,11 @@
+{
+  "name": "Minimal server",
+  "description": "A single room, nothing else.",
+  "answers": {
+    "layout": "server",
+    "netcode": "none",
+    "matchmaking": [],
+    "auth": "none",
+    "database": "none"
+  }
+}

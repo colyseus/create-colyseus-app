@@ -1,0 +1,2 @@
+// cleanup() signs the SDK out, so the token is set per test, not once.
+colyseus.sdk.auth.token = "test-user";

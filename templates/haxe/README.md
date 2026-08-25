@@ -1,6 +1,10 @@
 # `create-colyseus-app`
 
-An npm init template for kick starting a Colyseus project in TypeScript.
+An npm init template for kick starting a Colyseus project in Haxe.
+
+> **Note:** this template targets Colyseus **0.17**. The other templates have
+> moved to 0.18 — Haxe follows once [`colyseus-hxjs`](https://github.com/serjek/colyseus-hxjs)
+> (by @serjek) ships externs for the 0.18 API and `@colyseus/schema` 5.x.
 
 ## :crossed_swords: Usage
 

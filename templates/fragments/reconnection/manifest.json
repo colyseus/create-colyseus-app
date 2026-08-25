@@ -1,0 +1,5 @@
+{
+  "id": "reconnection",
+  "title": "Reconnection",
+  "snippets": { "room:methods": "reconnection.txt" }
+}

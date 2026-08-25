@@ -1,0 +1,17 @@
+/**
+ * Runs at matchmaking time, before a seat is taken and before onJoin().
+ * Throwing rejects the join; the return value becomes `client.auth`.
+ *
+ * Static, so it does not need a room instance. Use the instance form
+ * (`async onAuth(client, options, context)`) only for checks that need to read
+ * room state — it is skipped whenever the static hook returned a payload.
+ */
+static async onAuth(token: string, options: any, context: AuthContext) {
+  if (!token) {
+    throw new ServerError(401, "missing auth token");
+  }
+
+  // TODO: verify the token for real — your API, or JWT.verify() from
+  // @colyseus/auth when this server issued it.
+  return { userId: token };
+}

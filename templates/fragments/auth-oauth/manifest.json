@@ -1,0 +1,8 @@
+{
+  "id": "auth-oauth",
+  "title": "OAuth provider",
+  "snippets": { "auth:providers": "provider.txt" },
+  "env": {
+    "all": { "OAUTH_CLIENT_ID": "", "OAUTH_CLIENT_SECRET": "" }
+  }
+}

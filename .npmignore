@@ -5,7 +5,6 @@ node_modules
 # Build artifacts
 build
 dist
-lib
 
 # Logs
 npm-debug.log*

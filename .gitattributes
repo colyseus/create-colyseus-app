@@ -1,0 +1,3 @@
+# Composition splices and patches template files by exact byte match, so a CRLF
+# checkout would break every anchor and `find` string.
+* text=auto eol=lf

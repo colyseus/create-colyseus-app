@@ -1,0 +1,2 @@
+const { auth } = require("@colyseus/auth");
+require("./config/auth");

@@ -1,0 +1,59 @@
+{
+  "id": "shape-vite",
+  "title": "Single Vite project",
+  "languages": [
+    "ts"
+  ],
+  "removes": [
+    "src/index.ts",
+    "tsconfig.build.json"
+  ],
+  "packageJsonDelete": ["main"],
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "build:client": "vite build --mode client",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@colyseus/playground": "^0.18.3"
+  },
+  "devDependencies": {
+    "vite": "^8.2.1",
+    "@types/node": "^22.13.13"
+  },
+  "snippets": {
+    "server:exports": "exports.txt"
+  },
+  "patches": [
+    {
+      "file": "src/app.config.ts",
+      "find": "app.use(\"/\", playground());",
+      "replace": "app.use(\"/playground\", playground());"
+    },
+    {
+      "file": "ecosystem.config.cjs",
+      "find": "script: \"build/index.js\",",
+      "replace": "script: \"dist/server/server.mjs\","
+    },
+    {
+      "file": "README.md",
+      "find": "- `{{app-prefix}}src/index.ts`: entry point — leave it alone if you plan to deploy to Colyseus Cloud\n",
+      "replace": ""
+    },
+    {
+      "file": "README.md",
+      "find": "- `npm start`: run the server in watch mode (`tsx watch src/index.ts`)",
+      "replace": "- `npm start`: run Vite — client, server and playground on one port, with HMR"
+    },
+    {
+      "file": "README.md",
+      "find": "- `npm run build`: compile to `build/`",
+      "replace": "- `npm run build`: build client (`dist/client/`) and server (`dist/server/`)"
+    }
+  ],
+  "gitignore": [
+    "dist"
+  ]
+}

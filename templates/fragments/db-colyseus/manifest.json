@@ -1,0 +1,31 @@
+{
+  "id": "db-colyseus",
+  "title": "@colyseus/database",
+  "dependencies": {
+    "@colyseus/database": "^0.18.1",
+    "@colyseus/auth": "^0.18.1"
+  },
+  "snippets": {
+    "server:imports": "imports.txt",
+    "server:before": "before.txt",
+    "server:options": "options.txt"
+  },
+  "env": {
+    "development": {
+      "DATABASE_URL": "./colyseus.db"
+    },
+    "production": {
+      "DATABASE_URL": ""
+    },
+    "all": {
+      "JWT_SECRET": "@secret",
+      "SESSION_SECRET": "@secret"
+    }
+  },
+  "gitignore": [
+    "colyseus.db",
+    "colyseus.db-journal",
+    "*.db-wal",
+    "*.db-shm"
+  ]
+}

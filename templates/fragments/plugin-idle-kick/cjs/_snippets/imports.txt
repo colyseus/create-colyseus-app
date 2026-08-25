@@ -1,0 +1,2 @@
+const { definePlugins } = require("colyseus");
+const { IdleKickPlugin } = require("colyseus/plugins/idle-kick");
