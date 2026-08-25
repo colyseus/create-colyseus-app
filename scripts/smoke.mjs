@@ -96,8 +96,12 @@ function buildCases() {
 const results = [];
 const record = (name, step, ok, detail) => results.push({ name, step, ok, detail });
 
+const WINDOWS = process.platform === "win32";
+
 function run(cmd, cmdArgs, cwd) {
-  return spawnSync(cmd, cmdArgs, {
+  // Everything but node ships as a .cmd shim on Windows, which spawnSync only
+  // finds by its full name.
+  return spawnSync(WINDOWS && cmd !== "node" ? `${cmd}.cmd` : cmd, cmdArgs, {
     cwd,
     encoding: "utf8",
     // stdin closed on purpose: a prompt would block instead of silently passing.
@@ -136,6 +140,10 @@ function checkCliContract(tmp) {
 
 // ------------------------------------------------------------ per-case checks
 
+/** What the anchor splicer reads, and the wider set `{{var}}` substitution reaches. */
+const SPLICED = /\.(ts|tsx|js|jsx|mjs|cjs|html|md|hx|hxml)$/;
+const SUBSTITUTED = /\.(ts|tsx|js|jsx|mjs|cjs|html|md|hx|hxml|json|ya?ml)$/;
+
 function checkGenerated(testCase, dir) {
   const files = [];
   const walk = (d) => {
@@ -148,16 +156,24 @@ function checkGenerated(testCase, dir) {
   walk(dir);
 
   const leftovers = files.filter((f) => {
-    if (!/\.(ts|tsx|js|jsx|mjs|cjs|html|md|hx|hxml)$/.test(f)) return false;
+    if (!SPLICED.test(f)) return false;
     return fs.readFileSync(f, "utf8").includes("@colyseus:");
   });
   record(testCase.name, "no anchor residue", leftovers.length === 0, leftovers.map((f) => path.relative(dir, f)).join(", "));
 
   const unsubstituted = files.filter((f) => {
-    if (!/\.(ts|tsx|js|jsx|mjs|cjs|html|md|hx|hxml|json|ya?ml)$/.test(f)) return false;
+    if (!SUBSTITUTED.test(f)) return false;
     return /\{\{[\w-]+\}\}/.test(fs.readFileSync(f, "utf8"));
   });
   record(testCase.name, "no {{var}} residue", unsubstituted.length === 0, unsubstituted.map((f) => path.relative(dir, f)).join(", "));
+
+  // A backslash is path.relative() leaking a Windows separator through a
+  // substituted value — no template carries one of its own.
+  const backslashed = files.filter((f) => {
+    if (!SUBSTITUTED.test(f)) return false;
+    return fs.readFileSync(f, "utf8").includes("\\");
+  });
+  record(testCase.name, "no Windows path separators", backslashed.length === 0, backslashed.map((f) => path.relative(dir, f)).join(", "));
 
   // Under a workspace shape, fragment files belong to the app package, not the root.
   if (fs.existsSync(path.join(dir, "pnpm-workspace.yaml"))) {
@@ -224,7 +240,8 @@ if (!QUICK) {
     if (install.status !== 0) continue;
 
     for (const testCase of rest) {
-      fs.symlinkSync(path.join(leader.dir, "node_modules"), path.join(testCase.dir, "node_modules"), "dir");
+      // A junction on Windows: creating a real symlink needs an elevated process.
+      fs.symlinkSync(path.join(leader.dir, "node_modules"), path.join(testCase.dir, "node_modules"), WINDOWS ? "junction" : "dir");
     }
 
     for (const testCase of group) {
