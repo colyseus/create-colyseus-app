@@ -38,11 +38,49 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+    - name: Extract changelog
+      id: changelog
+      if: steps.check.outputs.changed == 'true'
+      run: |
+        VERSION="${{ steps.check.outputs.version }}"
+
+        # Body of the "## <version>" section, up to the next "## " heading.
+        # The trailing character class keeps 0.18.1 from matching 0.18.10.
+        # Guarded: `run:` executes under `bash -e`, so awk failing to open the
+        # file would fail the step *after* npm publish already succeeded.
+        BODY=""
+        [ -f CHANGELOG.md ] && BODY=$(awk -v ver="$VERSION" '
+          BEGIN { gsub(/\./, "\\.", ver) }
+          $0 ~ "^## " ver "([^0-9.]|$)" { found = 1; next }
+          /^## / { if (found) exit }
+          found { lines[n++] = $0 }
+          END {
+            s = 0; e = n - 1
+            while (s < n && lines[s] ~ /^[[:space:]]*$/) { s++ }
+            while (e >= s && lines[e] ~ /^[[:space:]]*$/) { e-- }
+            for (i = s; i <= e; i++) { print lines[i] }
+          }
+        ' CHANGELOG.md)
+
+        if [ -n "$BODY" ]; then
+          DELIMITER="CHANGELOG_DELIMITER_$RANDOM"
+          echo "body<<${DELIMITER}" >> $GITHUB_OUTPUT
+          printf '%s\n' "$BODY" >> $GITHUB_OUTPUT
+          echo "${DELIMITER}" >> $GITHUB_OUTPUT
+          echo "has_changelog=true" >> $GITHUB_OUTPUT
+        else
+          echo "::warning::no CHANGELOG.md section found for $VERSION"
+          echo "has_changelog=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Release
       if: steps.check.outputs.changed == 'true'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.check.outputs.version }}
+        name: v${{ steps.check.outputs.version }}
+        body: ${{ steps.changelog.outputs.body || '' }}
+        generate_release_notes: ${{ steps.changelog.outputs.has_changelog != 'true' }}
         prerelease: false
 
 
